@@ -1,19 +1,23 @@
 package com.company;
-import javax.swing.JFrame;
-public class Main {
+import javax.swing.*;
+import java.awt.*;
+
+public class Main extends JFrame{
+    /**
+     *
+     */
+    private static final long serialVersionUID = 1L;
+
+    public Main(){
+        super("Bibliothèque");
+
+    }
 
     public static void main(String[] args) {
- JFrame fenetre= new JFrame();
-        // definition du titre
-        fenetre.setTitle("Ma bibliothèque");
-        // définit sa taille
-        fenetre.setSize(400, 100);
-        // nous demandons a notre fenetre de se positionner au centre
-        fenetre.setLocationRelativeTo(null);
-        //termine le processus avec la croix rouge
-        fenetre.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        //fenetre visible
-        fenetre.setVisible(true);
+    Main myWindow = new Main();
+    myWindow.pack();
+    // rend la fenêtre visible
+    myWindow.setVisible(true);
     }
 
 }
