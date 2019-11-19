@@ -1,6 +1,11 @@
 package com.company;
 import javax.swing.*;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class Main extends JFrame{
     /**
@@ -17,8 +22,26 @@ public class Main extends JFrame{
         this.setJMenuBar(menuBar);
         JMenu file = new JMenu("Fichier");
         menuBar.add(file);
-        JMenuItem open = new JMenuItem("Ouvrir");
+        JMenuItem open = new JMenuItem("Ouvrir...");
         file.add(open);
+
+        open.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFileChooser fileChooser = new JFileChooser();
+                fileChooser.setDialogTitle("Ouvrir un fichier");
+                FileNameExtensionFilter xmlFilter = new FileNameExtensionFilter(
+                        "xml files", "xml");
+
+                fileChooser.setFileFilter(xmlFilter);
+                int result = fileChooser.showOpenDialog(null);
+                if (result == JFileChooser.APPROVE_OPTION) {
+                    System.out.println("You chose to open this file: " +
+                            fileChooser.getSelectedFile().getName());
+                }
+            }
+        });
+
 
 
         GridBagLayout myLayout = new GridBagLayout();
@@ -32,6 +55,7 @@ public class Main extends JFrame{
     // rend la fenêtre visible
     myWindow.setSize(500,400);
     myWindow.setVisible(true);
-    }
 
+
+        };
 }
