@@ -4,8 +4,6 @@
     <list default="true" id="bd237b63-801e-476c-a424-9bc8907e546b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bibli/com/company/Main.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bibli/com/company/Main.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu/Test.form" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Menu/Test.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Main.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -33,6 +31,7 @@
     <property name="project.structure.last.edited" value="Artifacts" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
+    <property name="restartRequiresConfirmation" value="false" />
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
