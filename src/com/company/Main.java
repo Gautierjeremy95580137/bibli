@@ -42,10 +42,12 @@ public class Main extends JFrame{
             }
         });
 
-
-
         GridBagLayout myLayout = new GridBagLayout();
         myPanel.setLayout(myLayout);
+         String donnees [] [] = {{"test","test1"}};
+         String entetes[] = {"Name","Auteur","résumé","colonne","Rangée","Parution"};
+         JTable board = new JTable(donnees,entetes);
+         getContentPane().add(board.getTableHeader());
 
     }
 
