@@ -35,21 +35,24 @@ public class Main extends JFrame{
 
                 fileChooser.setFileFilter(xmlFilter);
                 int result = fileChooser.showOpenDialog(null);
-                if (result == JFileChooser.APPROVE_OPTION) {
-                    System.out.println("You chose to open this file: " +
-                            fileChooser.getSelectedFile().getName());
-                }
             }
         });
 
-         //GridBagLayout myLayout = new GridBagLayout();
-         //myPanel.setLayout(myLayout);
+         GridBagLayout myLayout = new GridBagLayout();
+         myPanel.setLayout(myLayout);
+         GridBagConstraints gbc = new GridBagConstraints();
          Object [] [] donnees= {{"test","test","test","test", "test", "test"}};
-         String entetes[] = {"Name","Auteur","résumé","colonne","Rangée","Parution"};
+         String entetes[] = {"Name","Auteur","Résumé","Colonne","Rangée","Parution"};
          JTable tableau = new JTable(donnees,entetes);
          getContentPane().add((new JScrollPane(tableau.getTableHeader())));
-         myPanel.add(tableau);
-    }
+         gbc.gridx=0;
+         gbc.gridy=1;
+         gbc.gridheight=1;
+         gbc.gridwidth=1;
+         myPanel.add(tableau, gbc);
+
+
+        }
 
     public static void main(String[] args) {
     Main myWindow = new Main();
