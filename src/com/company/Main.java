@@ -42,13 +42,13 @@ public class Main extends JFrame{
             }
         });
 
-        GridBagLayout myLayout = new GridBagLayout();
-        myPanel.setLayout(myLayout);
-         String donnees [] [] = {{"test","test1"}};
+         //GridBagLayout myLayout = new GridBagLayout();
+         //myPanel.setLayout(myLayout);
+         Object [] [] donnees= {{"test","test","test","test", "test", "test"}};
          String entetes[] = {"Name","Auteur","résumé","colonne","Rangée","Parution"};
-         JTable board = new JTable(donnees,entetes);
-         getContentPane().add(board.getTableHeader());
-
+         JTable tableau = new JTable(donnees,entetes);
+         getContentPane().add((new JScrollPane(tableau.getTableHeader())));
+         myPanel.add(tableau);
     }
 
     public static void main(String[] args) {
@@ -57,6 +57,7 @@ public class Main extends JFrame{
     // rend la fenêtre visible
     myWindow.setSize(500,400);
     myWindow.setVisible(true);
+
 
 
         };
