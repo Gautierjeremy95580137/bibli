@@ -1,7 +1,12 @@
 package com.company;
+import java.awt.Color;
 import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
+import javax.swing.plaf.basic.BasicBorders;
+import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.TableCellRenderer;
+import javax.swing.table.TableColumn;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -14,7 +19,9 @@ public class Application extends JFrame{
     /**
      *
      */
+
     File myFile =null;
+
     public Application(){
         super("Bibliothèque");
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -63,16 +70,24 @@ public class Application extends JFrame{
          GridBagLayout myLayout = new GridBagLayout();
          myPanel.setLayout(myLayout);
 
-         Object [] [] donnees= {{"test","test","test","test", "test", "test"},
-                 {"test","test","test","test", "test", "test"}};
+         Object [] [] donnees= {
+                 {"Harry Potter","J.K Rowling","Orphelin, le jeune Harry Potter peut enfin quitter ses tyranniques oncle et tante Dursley lorsqu'un curieux messager lui révèle qu'il est un sorcier.","5", "2", "2009"},
+                 {"Eragon","C.Paolini","Eragon mène une vie simple, jusqu'au jour où il ramasse dans la forêt une étrange pierre bleue. Le garçon découvre qu'il s'agit d'un œuf et assiste bientôt à la naissance... d'un dragon !","2", "2", "2000"},
+                 {"Le Seigneur des anneaux","J.R.R. Tolkien","Aux temps reculés de ce récit, la Terre est peuplée d’innombrables créatures : les Hobbits, apparentés à l’Homme, les Elfes et les Nains vivent en paix dans la Comté. Une paix menacée depuis que l’Anneau de Puissance, forgé par Sauron de Mordor, a été dérobé.","7", "1", "1995"},
+                 {"Da Vinci Code","D. Brown","De passage à Paris, Robert Langdon, professeur à Havard et spécialiste de symbologie, est appelé d'urgence au Louvre, en pleine nuit. Jacques Saunière, le conservateur en chef a été retrouvé assassiné au milieu de la Grande Galerie.","4", "3", "2003"},
+                 {"Le Petit Prince","S.E Antoine","'J'ai ainsi vécu seul, sans personne avec qui parler véritablement, jusqu'à une panne dans le désert du Sahara, il y a six ans. Quelque chose s'était cassé dans mon moteur. Et comme je n'avais avec moi ni mécanicien, ni passagers, je me préparai à essayer de réussir, tout seul, une réparation difficile.'","9", "5", "1999"}
+         };
          String entetes[] = {"Name","Auteur","Résumé","Colonne","Rangée","Parution"};
          JTable tableau = new JTable(donnees,entetes);
-         Dimension mySize = new Dimension(550,40);
-         tableau.setMinimumSize(mySize);
-         JScrollPane myJScroll = new JScrollPane((tableau.getTableHeader()));
-         myJScroll.setMinimumSize(mySize);
-         getContentPane().add(myJScroll);
 
+         Dimension mySize = new Dimension(550,70);
+         tableau.setPreferredSize(mySize);
+         JScrollPane myJScroll = new JScrollPane((tableau.getTableHeader()));
+         Dimension enteteSize = new Dimension(550,35);
+         myJScroll.setPreferredSize(enteteSize);
+         myPanel.add(myJScroll);
+         // appliquer couleur différente 1 ligne sur 2
+         tableau.setDefaultRenderer(Object.class, new MyCellRenderer(tableau.getDefaultRenderer(Object.class)));
 
          GridBagConstraints gbc = new GridBagConstraints();
          gbc.gridx=0;
@@ -80,9 +95,13 @@ public class Application extends JFrame{
          gbc.gridheight=2;
          gbc.gridwidth=1;
          myPanel.add(tableau, gbc);
+         Dimension buttonSize = new Dimension(90,35);
          JButton myBtnAdd = new JButton("Ajouter");
-         JButton myBtnEdit = new JButton("Modifier");
+         myBtnAdd.setPreferredSize(buttonSize);
+         JButton myBtnEdit = new JButton(new ImageIcon("src/editButton.png"));
+         myBtnEdit.setPreferredSize(buttonSize);
          JButton myBtnDelete = new JButton("Supprimer");
+         myBtnDelete.setPreferredSize(buttonSize);
 
 
         gbc.gridx=1;
@@ -112,7 +131,7 @@ public class Application extends JFrame{
     Application myWindow = new Application();
     myWindow.pack();
     // rend la fenêtre visible
-    myWindow.setSize(800,600);
+    myWindow.setMinimumSize(new Dimension(800,600));
     myWindow.setVisible(true);
 
 
