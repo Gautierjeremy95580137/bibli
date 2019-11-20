@@ -63,10 +63,11 @@ public class Application extends JFrame{
          GridBagLayout myLayout = new GridBagLayout();
          myPanel.setLayout(myLayout);
 
-         Object [] [] donnees= {{"test","test","test","test", "test", "test"}};
+         Object [] [] donnees= {{"test","test","test","test", "test", "test"},
+                 {"test","test","test","test", "test", "test"}};
          String entetes[] = {"Name","Auteur","Résumé","Colonne","Rangée","Parution"};
          JTable tableau = new JTable(donnees,entetes);
-         Dimension mySize = new Dimension(350,220);
+         Dimension mySize = new Dimension(550,40);
          tableau.setMinimumSize(mySize);
          JScrollPane myJScroll = new JScrollPane((tableau.getTableHeader()));
          myJScroll.setMinimumSize(mySize);
@@ -83,6 +84,7 @@ public class Application extends JFrame{
          JButton myBtnEdit = new JButton("Modifier");
          JButton myBtnDelete = new JButton("Supprimer");
 
+
         gbc.gridx=1;
         gbc.gridy=0;
         gbc.gridheight=1;
@@ -90,6 +92,9 @@ public class Application extends JFrame{
 
         gbc.gridy=1;
         myPanel.add(myBtnEdit, gbc);
+
+        gbc.gridy=2;
+        myPanel.add(myBtnDelete,gbc);
 
         }
 
@@ -107,7 +112,7 @@ public class Application extends JFrame{
     Application myWindow = new Application();
     myWindow.pack();
     // rend la fenêtre visible
-    myWindow.setSize(500,400);
+    myWindow.setSize(800,600);
     myWindow.setVisible(true);
 
 
