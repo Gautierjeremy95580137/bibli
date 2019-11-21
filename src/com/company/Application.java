@@ -94,8 +94,13 @@ public class Application extends JFrame{
          gbc.gridx=0;
          gbc.gridy=1;
          gbc.gridheight=5;
-         gbc.gridwidth=1;
+         gbc.gridwidth=6;
          myPanel.add(tableau, gbc);
+
+        gbc.gridx=0;
+        gbc.gridy=0;
+        gbc.gridheight=1;
+        myPanel.add(myJScroll, gbc);
 
 
          Dimension buttonSize = new Dimension(90,35);
@@ -106,16 +111,24 @@ public class Application extends JFrame{
          JButton myBtnDelete = new JButton("Supprimer");
          myBtnDelete.setPreferredSize(buttonSize);
 
-        gbc.gridx=1;
-        gbc.gridy=0;
+        JLabel label = new JLabel("Titre :");
+
+        gbc.gridx=3;
+        gbc.gridy=7;
         gbc.gridheight=1;
+        gbc.gridwidth=1;
+
         myPanel.add(myBtnAdd, gbc);
+        myBtnAdd.setHorizontalAlignment(SwingConstants.CENTER);
+/*        gbc.gridy=1;
+        myPanel.add(myBtnEdit, gbc);*/
 
-        gbc.gridy=1;
-        myPanel.add(myBtnEdit, gbc);
-
-        gbc.gridy=2;
+        gbc.gridx = 4;
         myPanel.add(myBtnDelete,gbc);
+        myBtnAdd.setHorizontalAlignment(SwingConstants.CENTER);
+
+/*        gbc.gridx = 2;
+        myPanel.add(label, gbc);*/
 
         }
 
