@@ -167,7 +167,9 @@ public class Application extends JFrame{
 
             @Override
             public void mouseReleased(MouseEvent e) {
-
+                DefaultTableModel tableDefault = (DefaultTableModel)tableau.getModel();
+                Object [] nouvLigne = null;
+                tableDefault.addRow(nouvLigne);
             }
 
             @Override
