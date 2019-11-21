@@ -18,6 +18,9 @@ public class Application extends JFrame{
      *
      */
 
+    public void formulaire (){
+
+    }
 
     public Application(){
         super("Bibliothèque");
@@ -42,7 +45,6 @@ public class Application extends JFrame{
             public void mouseClicked(MouseEvent e) {
                 JOptionPane jop = new JOptionPane();
                 jop.showMessageDialog(null,"Version 1.0 \nIvann, Jérémy, Laurent","Informations", JOptionPane.INFORMATION_MESSAGE);
-
 
             }
 
@@ -120,8 +122,6 @@ public class Application extends JFrame{
             @Override
             public void mouseExited(MouseEvent e) {
 
-
-
             }
         });
 
@@ -157,6 +157,7 @@ public class Application extends JFrame{
                 {"Da Vinci Code","D. Brown","De passage à Paris, Robert Langdon, professeur à Havard et spécialiste de symbologie, est appelé d'urgence au Louvre, en pleine nuit. Jacques Saunière, le conservateur en chef a été retrouvé assassiné au milieu de la Grande Galerie.","4", "3", "2003"}
         };
         String entetes[] = {"Name","Auteur","Résumé","Colonne","Rangée","Parution"};
+
         JTable tableau = new JTable(donnees,entetes);
         DefaultTableModel tableModel = new DefaultTableModel(donnees, entetes);
         tableau.setModel(tableModel);
@@ -167,9 +168,7 @@ public class Application extends JFrame{
         myPanel.add(myJScroll);
         // appliquer couleur différente 1 ligne sur 2
         tableau.setDefaultRenderer(Object.class, new MyCellRenderer(tableau.getDefaultRenderer(Object.class)));
-
-
-
+        
         GridBagConstraints gbc = new GridBagConstraints();
 
         gbc.gridx=0;
@@ -224,9 +223,18 @@ public class Application extends JFrame{
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                ((DefaultTableModel) tableau.getModel()).removeRow(tableau.getSelectedRow());
-            }
+                int[] ligneSelect = tableau.getSelectedRows();
+                if (ligneSelect.length == 0) {
+                    JOptionPane optionpane = new JOptionPane();
+                    optionpane.showMessageDialog(tableau, "Veuillez sélectionner une ligne dans le tableau", "** Erreur **", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    for (int i = ligneSelect.length - 1; i > 0; i--) {
+                        tableModel.removeRow(ligneSelect[i]);
 
+                    }
+                    ((DefaultTableModel) tableau.getModel()).removeRow(tableau.getSelectedRow());
+                }
+            }
             @Override
             public void mouseEntered(MouseEvent e) {
 
@@ -239,19 +247,15 @@ public class Application extends JFrame{
         });
         myBtnDelete.setPreferredSize(buttonSize);
 
-
         gbc.gridx=3;
         gbc.gridy=10;
         gbc.gridheight=1;
         gbc.gridwidth=1;
 
         myPanel.add(myBtnAdd, gbc);
-        // myBtnAdd.setHorizontalAlignment(SwingConstants.CENTER);
 
         gbc.gridx = 4;
         myPanel.add(myBtnDelete,gbc);
-        //myBtnAdd.setHorizontalAlignment(SwingConstants.CENTER);
-
         JLabel titre = new JLabel("Titre :");
         JLabel auteur = new JLabel("Auteur :");
         JLabel parution = new JLabel("Parution :");
@@ -319,8 +323,8 @@ public class Application extends JFrame{
         gbc.gridy = 7;
         gbc.gridheight=1;
         myPanel.add(myBtnOk, gbc);
-    }
 
+    }
 
     public static void main(String[] args) {
         Application myWindow = new Application();
