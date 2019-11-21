@@ -82,8 +82,8 @@ public class Application extends JFrame{
          JTable tableau = new JTable(donnees,entetes);
 
          tableau.setPreferredSize(new Dimension(550,150));
-         JScrollPane myJScroll = new JScrollPane(tableau.getTableHeader());
-         myJScroll.setPreferredSize(new Dimension(550,35));
+         JScrollPane myJScroll = new JScrollPane(tableau);
+         //myJScroll.setPreferredSize(new Dimension(550,35));
          myPanel.add(myJScroll);
          // appliquer couleur différente 1 ligne sur 2
          tableau.setDefaultRenderer(Object.class, new MyCellRenderer(tableau.getDefaultRenderer(Object.class)));
@@ -91,15 +91,16 @@ public class Application extends JFrame{
 
 
          GridBagConstraints gbc = new GridBagConstraints();
-         gbc.gridx=0;
+/*         gbc.gridx=0;
          gbc.gridy=1;
          gbc.gridheight=5;
          gbc.gridwidth=6;
-         myPanel.add(tableau, gbc);
+         myPanel.add(tableau, gbc);*/
 
         gbc.gridx=0;
         gbc.gridy=0;
-        gbc.gridheight=1;
+        gbc.gridheight=5;
+        gbc.gridwidth=6;
         myPanel.add(myJScroll, gbc);
 
 
