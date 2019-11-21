@@ -111,7 +111,6 @@ public class Application extends JFrame{
          JButton myBtnDelete = new JButton("Supprimer");
          myBtnDelete.setPreferredSize(buttonSize);
 
-        JLabel label = new JLabel("Titre :");
 
         gbc.gridx=3;
         gbc.gridy=7;
@@ -119,17 +118,46 @@ public class Application extends JFrame{
         gbc.gridwidth=1;
 
         myPanel.add(myBtnAdd, gbc);
-        myBtnAdd.setHorizontalAlignment(SwingConstants.CENTER);
-/*        gbc.gridy=1;
-        myPanel.add(myBtnEdit, gbc);*/
+       // myBtnAdd.setHorizontalAlignment(SwingConstants.CENTER);
 
         gbc.gridx = 4;
         myPanel.add(myBtnDelete,gbc);
-        myBtnAdd.setHorizontalAlignment(SwingConstants.CENTER);
+        //myBtnAdd.setHorizontalAlignment(SwingConstants.CENTER);
 
-/*        gbc.gridx = 2;
-        myPanel.add(label, gbc);*/
+        JLabel titre = new JLabel("Titre :");
+        JLabel auteur = new JLabel("Auteur :");
+        JLabel parution = new JLabel("Parution :");
+        JLabel colonne = new JLabel("Colonne :");
+        JLabel rangée = new JLabel("Rangée :");
+        JLabel resume = new JLabel("Résumé :");
 
+        gbc.gridx = 8;
+        gbc.gridy = 0;
+        gbc.gridheight=1;
+        myPanel.add(titre, gbc);
+
+        gbc.gridy = 1;
+        myPanel.add(auteur, gbc);
+
+        gbc.gridy = 2;
+        myPanel.add(parution, gbc);
+
+        gbc.gridy = 3;
+        myPanel.add(colonne, gbc);
+
+        gbc.gridy = 4;
+        myPanel.add(rangée, gbc);
+
+        gbc.gridy = 5;
+        myPanel.add(resume, gbc);
+
+        Dimension fieldSize = new Dimension  (150, 20);
+        JTextField auteurField = new JTextField();
+        gbc.gridx = 9;
+        gbc.gridy = 0;
+        gbc.gridheight=1;
+        auteurField.setPreferredSize(fieldSize);
+        myPanel.add(auteurField);
         }
 
     /**
@@ -146,7 +174,7 @@ public class Application extends JFrame{
     Application myWindow = new Application();
     myWindow.pack();
     // rend la fenêtre visible
-    myWindow.setMinimumSize(new Dimension(800,600));
+    myWindow.setMinimumSize(new Dimension(1200,800));
     myWindow.setVisible(true);
         };
 }
