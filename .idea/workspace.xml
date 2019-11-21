@@ -4,6 +4,10 @@
     <list default="true" id="2807741f-f5f8-4feb-8b0f-1a880b5f421b" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bibli/com/company/Application$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bibli/com/company/Application$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bibli/com/company/Application$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bibli/com/company/Application$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bibli/com/company/Application$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bibli/com/company/Application$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bibli/com/company/Application$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bibli/com/company/Application$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/bibli/com/company/Application$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bibli/com/company/Application$5.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bibli/com/company/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bibli/com/company/Application.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Application.java" afterDir="false" />
     </list>
@@ -126,16 +130,5 @@
         </entry>
       </map>
     </option>
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/com/company/Application.java</url>
-          <line>30</line>
-          <option name="timeStamp" value="1" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -41,7 +41,7 @@ public class Application extends JFrame{
             @Override
             public void mouseClicked(MouseEvent e) {
                 JOptionPane jop = new JOptionPane();
-                jop.showMessageDialog(null,"Version 1.0 \nYvann, Jérémy, Laurent","Informations", JOptionPane.INFORMATION_MESSAGE);
+                jop.showMessageDialog(null,"Version 1.0 \nIvann, Jérémy, Laurent","Informations", JOptionPane.INFORMATION_MESSAGE);
 
 
             }
@@ -67,7 +67,6 @@ public class Application extends JFrame{
 
             }
         });
-
         open.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -94,6 +93,34 @@ public class Application extends JFrame{
 
             @Override
             public void mouseExited(MouseEvent e) {
+
+            }
+        });
+        quit.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                dispose();
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+
 
             }
         });
@@ -183,32 +210,6 @@ public class Application extends JFrame{
             }
         });
         myBtnAdd.setPreferredSize(buttonSize);
-        myBtnAdd.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-                
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
         JButton myBtnDelete = new JButton(new ImageIcon("src/deleteButton.png"));
         myBtnDelete.addMouseListener(new MouseListener() {
             @Override
