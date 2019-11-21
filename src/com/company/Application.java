@@ -99,7 +99,7 @@ public class Application extends JFrame{
 
         gbc.gridx=0;
         gbc.gridy=0;
-        gbc.gridheight=5;
+        gbc.gridheight=8;
         gbc.gridwidth=6;
         myPanel.add(myJScroll, gbc);
 
@@ -113,8 +113,9 @@ public class Application extends JFrame{
          myBtnDelete.setPreferredSize(buttonSize);
 
 
+
         gbc.gridx=3;
-        gbc.gridy=7;
+        gbc.gridy=9;
         gbc.gridheight=1;
         gbc.gridwidth=1;
 
@@ -132,33 +133,62 @@ public class Application extends JFrame{
         JLabel rangée = new JLabel("Rangée :");
         JLabel resume = new JLabel("Résumé :");
 
-        gbc.gridx = 8;
-        gbc.gridy = 0;
+        gbc.gridx = 7;
+        gbc.gridy = 1;
         gbc.gridheight=1;
         myPanel.add(titre, gbc);
 
-        gbc.gridy = 1;
+        gbc.gridy = 2;
         myPanel.add(auteur, gbc);
 
-        gbc.gridy = 2;
+        gbc.gridy = 3;
         myPanel.add(parution, gbc);
 
-        gbc.gridy = 3;
+        gbc.gridy = 4;
         myPanel.add(colonne, gbc);
 
-        gbc.gridy = 4;
+        gbc.gridy = 5;
         myPanel.add(rangée, gbc);
 
-        gbc.gridy = 5;
+        gbc.gridy = 6;
         myPanel.add(resume, gbc);
 
+
         Dimension fieldSize = new Dimension  (150, 20);
-        JTextField auteurField = new JTextField();
-        gbc.gridx = 9;
-        gbc.gridy = 0;
+        JTextField titreField = new JTextField();
+        gbc.gridx = 8;
+        gbc.gridy = 1;
         gbc.gridheight=1;
+        titreField.setPreferredSize(fieldSize);
+        myPanel.add(titreField,gbc);
+
+        JTextField auteurField = new JTextField();
+        gbc.gridy = 2;
         auteurField.setPreferredSize(fieldSize);
-        myPanel.add(auteurField);
+        myPanel.add(auteurField,gbc);
+
+        JTextField parutionField = new JTextField();
+        gbc.gridy = 3;
+        parutionField.setPreferredSize(fieldSize);
+        myPanel.add(parutionField,gbc);
+
+        JTextField colonneField = new JTextField();
+        gbc.gridy = 4;
+        colonneField.setPreferredSize(fieldSize);
+        myPanel.add(colonneField,gbc);
+
+        JTextField rangeeField = new JTextField();
+        gbc.gridy = 5;
+        rangeeField.setPreferredSize(fieldSize);
+        myPanel.add(rangeeField,gbc);
+
+        Dimension areaSize = new Dimension  (150, 80);
+        JTextArea resumerField = new JTextArea();
+        gbc.gridy = 6;
+        resumerField.setPreferredSize(areaSize);
+        myPanel.add(resumerField,gbc);
+
+
         }
 
     /**
