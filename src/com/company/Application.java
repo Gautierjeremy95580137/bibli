@@ -14,7 +14,9 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.time.Year;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class Application extends JFrame{
     /**
@@ -133,7 +135,7 @@ public class Application extends JFrame{
                 {"Eragon","C.Paolini","Eragon mène une vie simple, jusqu'au jour où il ramasse dans la forêt une étrange pierre bleue. Le garçon découvre qu'il s'agit d'un œuf et assiste bientôt à la naissance... d'un dragon !","2", "2", "2000"},
                 {"Le Seigneur des anneaux","J.R.R. Tolkien","Aux temps reculés de ce récit, la Terre est peuplée d’innombrables créatures : les Hobbits, apparentés à l’Homme, les Elfes et les Nains vivent en paix dans la Comté. Une paix menacée depuis que l’Anneau de Puissance, forgé par Sauron de Mordor, a été dérobé.","7", "1", "1995"},
                 {"Da Vinci Code","D. Brown","De passage à Paris, Robert Langdon, professeur à Havard et spécialiste de symbologie, est appelé d'urgence au Louvre, en pleine nuit. Jacques Saunière, le conservateur en chef a été retrouvé assassiné au milieu de la Grande Galerie.","4", "3", "2003"},
-                {"Le Petit Prince","S.E Antoine","'J'ai ainsi vécu seul, sans personne avec qui parler véritablement, jusqu'à une panne dans le désert du Sahara, il y a six ans. Quelque chose s'était cassé dans mon moteur. Et comme je n'avais avec moi ni mécanicien, ni passagers, je me préparai à essayer de réussir, tout seul, une réparation difficile.'","9", "5", "1999"},
+                {"Le Petit Prince","S.E Antoine","'J'ai ainsi vécu seul, sans personne avec qui parler véritablement, jusqu'à une panne dans le désert du Sahara, il y a six ans. Quelque chose s'était cassé dans mon moteur. Et comme je n'avais avec moi ni mécanicien, ni passagers, je me préparai à essayer de réussir, tout seul, une réparation difficile.'","1", "5", "1999"},
                 {"Eragon","C.Paolini","Eragon mène une vie simple, jusqu'au jour où il ramasse dans la forêt une étrange pierre bleue. Le garçon découvre qu'il s'agit d'un œuf et assiste bientôt à la naissance... d'un dragon !","2", "2", "2000"},
                 {"Le Seigneur des anneaux","J.R.R. Tolkien","Aux temps reculés de ce récit, la Terre est peuplée d’innombrables créatures : les Hobbits, apparentés à l’Homme, les Elfes et les Nains vivent en paix dans la Comté. Une paix menacée depuis que l’Anneau de Puissance, forgé par Sauron de Mordor, a été dérobé.","7", "1", "1995"},
                 {"Da Vinci Code","D. Brown","De passage à Paris, Robert Langdon, professeur à Havard et spécialiste de symbologie, est appelé d'urgence au Louvre, en pleine nuit. Jacques Saunière, le conservateur en chef a été retrouvé assassiné au milieu de la Grande Galerie.","4", "3", "2003"},
@@ -194,8 +196,8 @@ public class Application extends JFrame{
             @Override
             public void mouseReleased(MouseEvent e) {
                 DefaultTableModel tableDefault = (DefaultTableModel)tableau.getModel();
-                Object [] nouvLigne = null;
-                tableDefault.addRow(nouvLigne);
+                String []  ligneVide = {"","","","","","",};
+                tableDefault.addRow(ligneVide);
             }
 
             @Override
@@ -366,12 +368,27 @@ public class Application extends JFrame{
             @Override
             public void mouseReleased(MouseEvent e) {
                 int ligneSelectionnee = tableau.getSelectedRow();
+                int year = Calendar.getInstance().get(Calendar.YEAR);
                 tableau.setValueAt(titreField.getText(), ligneSelectionnee, 0);
+
                 tableau.setValueAt(auteurField.getText(), ligneSelectionnee, 1);
-                tableau.setValueAt(parutionField.getText(), ligneSelectionnee, 5);
-                tableau.setValueAt(colonneField.getText(), ligneSelectionnee, 3);
-                tableau.setValueAt(rangeeField.getText(), ligneSelectionnee, 4);
+
+
+                if (Integer.parseInt(parutionField.getText()) <= year) {
+                    tableau.setValueAt(parutionField.getText(), ligneSelectionnee, 5);
+                } else;
+
+
+                if (Integer.parseInt(colonneField.getText()) > 0 && Integer.parseInt(colonneField.getText()) < 8 ) {
+                    tableau.setValueAt(colonneField.getText(), ligneSelectionnee, 3);
+                } else;
+
+                if (Integer.parseInt(rangeeField.getText()) > 0 && Integer.parseInt(rangeeField.getText()) < 6 ) {
+                    tableau.setValueAt(rangeeField.getText(), ligneSelectionnee, 4);
+                } else;
+
                 tableau.setValueAt(resumerArea.getText(), ligneSelectionnee, 2);
+
                 titreField.setText("");
                 auteurField.setText("");
                 parutionField.setText("");
@@ -404,7 +421,6 @@ public class Application extends JFrame{
         colonneField.setText(tableau.getValueAt(ligneSelectionnee, 3).toString());
         rangeeField.setText(tableau.getValueAt(ligneSelectionnee, 4).toString());
         resumerArea.setText(tableau.getValueAt(ligneSelectionnee, 2).toString());
-
     }
 });
         };
