@@ -312,8 +312,9 @@ public class Application extends JFrame{
         rangeeField.setPreferredSize(fieldSize);
         myPanel.add(rangeeField,gbc);
 
-        Dimension areaSize = new Dimension  (150, 80);
+        Dimension areaSize = new Dimension  (150, 200);
         JTextArea resumerArea = new JTextArea();
+        resumerArea.setLineWrap(true);
         gbc.gridy = 6;
         resumerArea.setPreferredSize(areaSize);
         myPanel.add(resumerArea,gbc);
