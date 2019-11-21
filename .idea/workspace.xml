@@ -5,9 +5,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bibli/com/company/Application$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bibli/com/company/Application$1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/bibli/com/company/Application.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/bibli/com/company/Application.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/bibli/editButton.png" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/com/company/Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/com/company/Application.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/editButton.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -128,5 +126,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/com/company/Application.java</url>
+          <line>30</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

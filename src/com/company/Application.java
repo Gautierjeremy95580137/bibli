@@ -4,10 +4,7 @@ import javax.swing.*;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.basic.BasicBorders;
-import javax.swing.table.DefaultTableCellRenderer;
-import javax.swing.table.JTableHeader;
-import javax.swing.table.TableCellRenderer;
-import javax.swing.table.TableColumn;
+import javax.swing.table.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -97,7 +94,8 @@ public class Application extends JFrame{
          };
          String entetes[] = {"Name","Auteur","Résumé","Colonne","Rangée","Parution"};
          JTable tableau = new JTable(donnees,entetes);
-
+         DefaultTableModel tableModel = new DefaultTableModel(donnees, entetes);
+         tableau.setModel(tableModel);
 
          JScrollPane myJScroll = new JScrollPane(tableau);
          myJScroll.setPreferredSize(new Dimension(550,350));
@@ -105,6 +103,7 @@ public class Application extends JFrame{
          myPanel.add(myJScroll);
          // appliquer couleur différente 1 ligne sur 2
          tableau.setDefaultRenderer(Object.class, new MyCellRenderer(tableau.getDefaultRenderer(Object.class)));
+
 
 
          GridBagConstraints gbc = new GridBagConstraints();
@@ -118,8 +117,86 @@ public class Application extends JFrame{
 
          Dimension buttonSize = new Dimension(90,35);
          JButton myBtnAdd = new JButton(new ImageIcon("src/addButton.png"));
+         myBtnAdd.addMouseListener(new MouseListener() {
+             @Override
+             public void mouseClicked(MouseEvent e) {
+
+             }
+
+             @Override
+             public void mousePressed(MouseEvent e) {
+
+             }
+
+             @Override
+             public void mouseReleased(MouseEvent e) {
+
+             }
+
+             @Override
+             public void mouseEntered(MouseEvent e) {
+
+             }
+
+             @Override
+             public void mouseExited(MouseEvent e) {
+
+             }
+         });
          myBtnAdd.setPreferredSize(buttonSize);
+         myBtnAdd.addMouseListener(new MouseListener() {
+             @Override
+             public void mouseClicked(MouseEvent e) {
+
+             }
+
+             @Override
+             public void mousePressed(MouseEvent e) {
+
+             }
+
+             @Override
+             public void mouseReleased(MouseEvent e) {
+                 ((DefaultTableModel) tableau.getModel()).addRow(donnees, entetes);
+             }
+
+             @Override
+             public void mouseEntered(MouseEvent e) {
+
+             }
+
+             @Override
+             public void mouseExited(MouseEvent e) {
+
+             }
+         });
          JButton myBtnDelete = new JButton(new ImageIcon("src/deleteButton.png"));
+         myBtnDelete.addMouseListener(new MouseListener() {
+             @Override
+             public void mouseClicked(MouseEvent e) {
+
+             }
+
+             @Override
+             public void mousePressed(MouseEvent e) {
+
+             }
+
+             @Override
+             public void mouseReleased(MouseEvent e) {
+                 ((DefaultTableModel) tableau.getModel()).removeRow(tableau.getSelectedRow());
+             }
+
+             @Override
+             public void mouseEntered(MouseEvent e) {
+
+             }
+
+             @Override
+             public void mouseExited(MouseEvent e) {
+
+             }
+         });
          myBtnDelete.setPreferredSize(buttonSize);
 
 
