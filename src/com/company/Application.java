@@ -5,6 +5,7 @@ import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.basic.BasicBorders;
 import javax.swing.table.DefaultTableCellRenderer;
+import javax.swing.table.JTableHeader;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableColumn;
 import java.awt.*;
@@ -70,7 +71,7 @@ public class Application extends JFrame{
          GridBagLayout myLayout = new GridBagLayout();
          myPanel.setLayout(myLayout);
 
-         Object [] [] donnees= {
+         Object [][] donnees = {
                  {"Harry Potter","J.K Rowling","Orphelin, le jeune Harry Potter peut enfin quitter ses tyranniques oncle et tante Dursley lorsqu'un curieux messager lui révèle qu'il est un sorcier.","5", "2", "2009"},
                  {"Eragon","C.Paolini","Eragon mène une vie simple, jusqu'au jour où il ramasse dans la forêt une étrange pierre bleue. Le garçon découvre qu'il s'agit d'un œuf et assiste bientôt à la naissance... d'un dragon !","2", "2", "2000"},
                  {"Le Seigneur des anneaux","J.R.R. Tolkien","Aux temps reculés de ce récit, la Terre est peuplée d’innombrables créatures : les Hobbits, apparentés à l’Homme, les Elfes et les Nains vivent en paix dans la Comté. Une paix menacée depuis que l’Anneau de Puissance, forgé par Sauron de Mordor, a été dérobé.","7", "1", "1995"},
@@ -80,21 +81,23 @@ public class Application extends JFrame{
          String entetes[] = {"Name","Auteur","Résumé","Colonne","Rangée","Parution"};
          JTable tableau = new JTable(donnees,entetes);
 
-         Dimension mySize = new Dimension(550,70);
-         tableau.setPreferredSize(mySize);
-         JScrollPane myJScroll = new JScrollPane((tableau.getTableHeader()));
-         Dimension enteteSize = new Dimension(550,35);
-         myJScroll.setPreferredSize(enteteSize);
+         tableau.setPreferredSize(new Dimension(550,150));
+         JScrollPane myJScroll = new JScrollPane(tableau.getTableHeader());
+         myJScroll.setPreferredSize(new Dimension(550,35));
          myPanel.add(myJScroll);
          // appliquer couleur différente 1 ligne sur 2
          tableau.setDefaultRenderer(Object.class, new MyCellRenderer(tableau.getDefaultRenderer(Object.class)));
 
+
+
          GridBagConstraints gbc = new GridBagConstraints();
          gbc.gridx=0;
          gbc.gridy=1;
-         gbc.gridheight=2;
+         gbc.gridheight=5;
          gbc.gridwidth=1;
          myPanel.add(tableau, gbc);
+
+
          Dimension buttonSize = new Dimension(90,35);
          JButton myBtnAdd = new JButton("Ajouter");
          myBtnAdd.setPreferredSize(buttonSize);
@@ -102,7 +105,6 @@ public class Application extends JFrame{
          myBtnEdit.setPreferredSize(buttonSize);
          JButton myBtnDelete = new JButton("Supprimer");
          myBtnDelete.setPreferredSize(buttonSize);
-
 
         gbc.gridx=1;
         gbc.gridy=0;
@@ -133,8 +135,5 @@ public class Application extends JFrame{
     // rend la fenêtre visible
     myWindow.setMinimumSize(new Dimension(800,600));
     myWindow.setVisible(true);
-
-
-
         };
 }
