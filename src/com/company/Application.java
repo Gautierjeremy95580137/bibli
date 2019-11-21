@@ -1,6 +1,8 @@
 package com.company;
 import java.awt.Color;
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.filechooser.FileFilter;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.plaf.basic.BasicBorders;
@@ -12,15 +14,13 @@ import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.FilenameFilter;
+import java.util.ArrayList;
 
 public class Application extends JFrame{
     /**
      *
      */
 
-    public void formulaire (){
-
-    }
 
     public Application(){
         super("Bibliothèque");
@@ -128,7 +128,7 @@ public class Application extends JFrame{
         GridBagLayout myLayout = new GridBagLayout();
         myPanel.setLayout(myLayout);
 
-        Object [][] donnees = {
+        String [][] donnees = {
                 {"Harry Potter","J.K Rowling","Orphelin, le jeune Harry Potter peut enfin quitter ses tyranniques oncle et tante Dursley lorsqu'un curieux messager lui révèle qu'il est un sorcier.","5", "2", "2009"},
                 {"Eragon","C.Paolini","Eragon mène une vie simple, jusqu'au jour où il ramasse dans la forêt une étrange pierre bleue. Le garçon découvre qu'il s'agit d'un œuf et assiste bientôt à la naissance... d'un dragon !","2", "2", "2000"},
                 {"Le Seigneur des anneaux","J.R.R. Tolkien","Aux temps reculés de ce récit, la Terre est peuplée d’innombrables créatures : les Hobbits, apparentés à l’Homme, les Elfes et les Nains vivent en paix dans la Comté. Une paix menacée depuis que l’Anneau de Puissance, forgé par Sauron de Mordor, a été dérobé.","7", "1", "1995"},
@@ -156,7 +156,7 @@ public class Application extends JFrame{
                 {"Le Seigneur des anneaux","J.R.R. Tolkien","Aux temps reculés de ce récit, la Terre est peuplée d’innombrables créatures : les Hobbits, apparentés à l’Homme, les Elfes et les Nains vivent en paix dans la Comté. Une paix menacée depuis que l’Anneau de Puissance, forgé par Sauron de Mordor, a été dérobé.","7", "1", "1995"},
                 {"Da Vinci Code","D. Brown","De passage à Paris, Robert Langdon, professeur à Havard et spécialiste de symbologie, est appelé d'urgence au Louvre, en pleine nuit. Jacques Saunière, le conservateur en chef a été retrouvé assassiné au milieu de la Grande Galerie.","4", "3", "2003"}
         };
-        String entetes[] = {"Name","Auteur","Résumé","Colonne","Rangée","Parution"};
+        Object entetes[] = {"Titre","Auteur","Résumé","Colonne","Rangée","Parution"};
 
         JTable tableau = new JTable(donnees,entetes);
         DefaultTableModel tableModel = new DefaultTableModel(donnees, entetes);
@@ -168,7 +168,7 @@ public class Application extends JFrame{
         myPanel.add(myJScroll);
         // appliquer couleur différente 1 ligne sur 2
         tableau.setDefaultRenderer(Object.class, new MyCellRenderer(tableau.getDefaultRenderer(Object.class)));
-        
+
         GridBagConstraints gbc = new GridBagConstraints();
 
         gbc.gridx=0;
@@ -313,10 +313,10 @@ public class Application extends JFrame{
         myPanel.add(rangeeField,gbc);
 
         Dimension areaSize = new Dimension  (150, 80);
-        JTextArea resumerField = new JTextArea();
+        JTextArea resumerArea = new JTextArea();
         gbc.gridy = 6;
-        resumerField.setPreferredSize(areaSize);
-        myPanel.add(resumerField,gbc);
+        resumerArea.setPreferredSize(areaSize);
+        myPanel.add(resumerArea,gbc);
 
         JButton myBtnOk = new JButton(new ImageIcon("src/checkButton.png"));
         myBtnOk.setPreferredSize(buttonSize);
@@ -324,7 +324,50 @@ public class Application extends JFrame{
         gbc.gridheight=1;
         myPanel.add(myBtnOk, gbc);
 
+
+        myJScroll.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
+    tableau.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+    @Override
+    public void valueChanged(ListSelectionEvent e) {
+        int ligneSelectionnee = tableau.getSelectedRow();
+
+        titreField.setText(tableau.getValueAt(ligneSelectionnee, 0).toString());
+        auteurField.setText(tableau.getValueAt(ligneSelectionnee, 1).toString());
+        parutionField.setText(tableau.getValueAt(ligneSelectionnee, 5).toString());
+        colonneField.setText(tableau.getValueAt(ligneSelectionnee, 3).toString());
+        rangeeField.setText(tableau.getValueAt(ligneSelectionnee, 4).toString());
+        resumerArea.setText(tableau.getValueAt(ligneSelectionnee, 2).toString());
     }
+});
+
+
+        };
 
     public static void main(String[] args) {
         Application myWindow = new Application();
