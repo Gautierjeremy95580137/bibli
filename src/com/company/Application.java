@@ -351,6 +351,46 @@ public class Application extends JFrame{
 
             }
         });
+        myBtnOk.addMouseListener(new MouseListener() {
+            @Override
+            public void mouseClicked(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+                int ligneSelectionnee = tableau.getSelectedRow();
+                tableau.setValueAt(titreField.getText(), ligneSelectionnee, 0);
+                tableau.setValueAt(auteurField.getText(), ligneSelectionnee, 1);
+                tableau.setValueAt(parutionField.getText(), ligneSelectionnee, 5);
+                tableau.setValueAt(colonneField.getText(), ligneSelectionnee, 3);
+                tableau.setValueAt(rangeeField.getText(), ligneSelectionnee, 4);
+                tableau.setValueAt(resumerArea.getText(), ligneSelectionnee, 2);
+                titreField.setText("");
+                auteurField.setText("");
+                parutionField.setText("");
+                colonneField.setText("");
+                rangeeField.setText("");
+                resumerArea.setText("");
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+        });
+
 
     tableau.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
     @Override
@@ -363,10 +403,9 @@ public class Application extends JFrame{
         colonneField.setText(tableau.getValueAt(ligneSelectionnee, 3).toString());
         rangeeField.setText(tableau.getValueAt(ligneSelectionnee, 4).toString());
         resumerArea.setText(tableau.getValueAt(ligneSelectionnee, 2).toString());
+
     }
 });
-
-
         };
 
     public static void main(String[] args) {
@@ -375,5 +414,6 @@ public class Application extends JFrame{
         // rend la fenêtre visible
         myWindow.setMinimumSize(new Dimension(1200,800));
         myWindow.setVisible(true);
+        myWindow.setLocationRelativeTo(null);
     };
 }
