@@ -279,7 +279,7 @@ public class Application extends JFrame{
         gbc.gridwidth=1;
 
         myPanel.add(myBtnAdd, gbc);
-    // mise en place des dénomination des textFields
+        // mise en place des dénomination des textFields
         gbc.gridx = 4;
         myPanel.add(myBtnDelete,gbc);
         JLabel titre = new JLabel("Titre :");
@@ -380,7 +380,8 @@ public class Application extends JFrame{
                     tableau.setValueAt(parutionField.getText(), ligneSelectionnee, 5);
                 }else{
                     JOptionPane parution = new JOptionPane();
-                    parution.showMessageDialog(null,"Veuillez saisir une année antérieur à : "+year);
+                    ImageIcon imgUnicorn = new ImageIcon("src/unicorn.png");
+                    parution.showMessageDialog(null,"Veuillez saisir une année antérieur à : "+year,"Date de parution Invalide",JOptionPane.INFORMATION_MESSAGE,imgUnicorn);
                 }
 
 
@@ -388,7 +389,8 @@ public class Application extends JFrame{
                     tableau.setValueAt(colonneField.getText(), ligneSelectionnee, 3);
                 }else {
                     JOptionPane colonne = new JOptionPane();
-                    colonne.showMessageDialog(null, "Veuillez séléctionner un numéro de colonne entre 1 et 8 compris");
+                    ImageIcon imgUnicorn = new ImageIcon("src/unicorn.png");
+                    colonne.showMessageDialog(null, "Veuillez séléctionner un numéro de colonne entre 1 et 8 compris","Colonne invalide",JOptionPane.INFORMATION_MESSAGE, imgUnicorn);
                 }
 
 
@@ -396,7 +398,8 @@ public class Application extends JFrame{
                     tableau.setValueAt(rangeeField.getText(), ligneSelectionnee, 4);
                 } else {
                     JOptionPane rangee = new JOptionPane();
-                    rangee.showMessageDialog(null, "Veuillez séléctionner un numéro de rangée entre 1 et 5 compris");
+                    ImageIcon imgUnicorn = new ImageIcon("src/unicorn.png");
+                    rangee.showMessageDialog(null, "Veuillez séléctionner un numéro de rangée entre 1 et 5 compris","Rangée invalide",JOptionPane.INFORMATION_MESSAGE,imgUnicorn);
                 }
 
                 tableau.setValueAt(resumerArea.getText(), ligneSelectionnee, 2);
@@ -422,23 +425,23 @@ public class Application extends JFrame{
         });
 
 
-    tableau.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
-    @Override
-    /**
-     * Un clic sur une ligne du tableau affiche les données sélectionnées dans le formulaire.
-     */
-    public void valueChanged(ListSelectionEvent e) {
-        int ligneSelectionnee = tableau.getSelectedRow();
+        tableau.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            /**
+             * Un clic sur une ligne du tableau affiche les données sélectionnées dans le formulaire.
+             */
+            public void valueChanged(ListSelectionEvent e) {
+                int ligneSelectionnee = tableau.getSelectedRow();
 
-        // affiche dans le champ "titre" du formulaire le texte contenu dans la colonne 0 de la ligne sélectionnée.
-        titreField.setText(tableau.getValueAt(ligneSelectionnee, 0).toString());
-        auteurField.setText(tableau.getValueAt(ligneSelectionnee, 1).toString());
-        parutionField.setText(tableau.getValueAt(ligneSelectionnee, 5).toString());
-        colonneField.setText(tableau.getValueAt(ligneSelectionnee, 3).toString());
-        rangeeField.setText(tableau.getValueAt(ligneSelectionnee, 4).toString());
-        resumerArea.setText(tableau.getValueAt(ligneSelectionnee, 2).toString());
-    }
-});
+                // affiche dans le champ "titre" du formulaire le texte contenu dans la colonne 0 de la ligne sélectionnée.
+                titreField.setText(tableau.getValueAt(ligneSelectionnee, 0).toString());
+                auteurField.setText(tableau.getValueAt(ligneSelectionnee, 1).toString());
+                parutionField.setText(tableau.getValueAt(ligneSelectionnee, 5).toString());
+                colonneField.setText(tableau.getValueAt(ligneSelectionnee, 3).toString());
+                rangeeField.setText(tableau.getValueAt(ligneSelectionnee, 4).toString());
+                resumerArea.setText(tableau.getValueAt(ligneSelectionnee, 2).toString());
+            }
+        });
 
     };
 
