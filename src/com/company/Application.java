@@ -176,6 +176,8 @@ public class Application extends JFrame{
         DefaultTableModel tableModel = new DefaultTableModel(donnees, entetes);
         tableau.setModel(tableModel);
 
+        //ScrollBar = new JScrollBar
+
         JScrollPane myJScroll = new JScrollPane(tableau);
         myJScroll.setPreferredSize(new Dimension(550,350));
         //ajout d'une scrollbar
@@ -436,7 +438,8 @@ public class Application extends JFrame{
         resumerArea.setText(tableau.getValueAt(ligneSelectionnee, 2).toString());
     }
 });
-        };
+
+    };
 
     public static void main(String[] args) {
         // création d'une fenêtre
@@ -445,5 +448,6 @@ public class Application extends JFrame{
         myWindow.setMinimumSize(new Dimension(1200,800));
         // rend la fenêtre visible
         myWindow.setVisible(true);
+        myWindow.setLocationRelativeTo(null);
     };
 }
