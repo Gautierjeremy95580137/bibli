@@ -29,14 +29,17 @@ public class Application extends JFrame{
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
         JPanel myPanel = new JPanel();
         this.setContentPane(myPanel);
+        //barre de menu
         JMenuBar menuBar = new JMenuBar();
         this.setJMenuBar(menuBar);
+        // sous menu
         JMenu file = new JMenu("Fichier");
         menuBar.add(file);
         JMenu edit = new JMenu("Edition");
         menuBar.add(edit);
         JMenu about = new JMenu("A propos");
         menuBar.add(about);
+        // sous menus
         JMenuItem open = new JMenuItem("Ouvrir...");
         file.add(open);
         JMenuItem quit = new JMenuItem("Quitter");
@@ -44,6 +47,9 @@ public class Application extends JFrame{
 
         about.addMouseListener(new MouseListener() {
             @Override
+            /**
+             * Un clic sur le menu "A propos" affiche une boîte de dialogue contenant le n° de version et les créateurs de l'application
+             */
             public void mouseClicked(MouseEvent e) {
                 JOptionPane jop = new JOptionPane();
                 jop.showMessageDialog(null,"Version 1.0 \nIvann, Jérémy, Laurent","Informations", JOptionPane.INFORMATION_MESSAGE);
@@ -83,6 +89,9 @@ public class Application extends JFrame{
             }
 
             @Override
+            /**
+             * Un clic sur le sous-menu "Ouvrir..." ouvre un explorateur de fichier permettant de ne sélectionn er que des fichiers à l'extension .xml
+             */
             public void mouseReleased(MouseEvent e) {
                 JFileChooser fileChooser = new JFileChooser();
                 FileNameExtensionFilter myFileFilterXML = new FileNameExtensionFilter("Seulement des fichiers XML", "xml");
@@ -112,6 +121,9 @@ public class Application extends JFrame{
             }
 
             @Override
+            /**
+             * Un clic sur le sous-menu "quitter" ferme l'application
+             */
             public void mouseReleased(MouseEvent e) {
                 dispose();
             }
@@ -126,7 +138,7 @@ public class Application extends JFrame{
 
             }
         });
-
+        // Nouveau GridBagLayout pour pouvoir manipuler les objets et les déplacer
         GridBagLayout myLayout = new GridBagLayout();
         myPanel.setLayout(myLayout);
 
@@ -166,6 +178,7 @@ public class Application extends JFrame{
 
         JScrollPane myJScroll = new JScrollPane(tableau);
         myJScroll.setPreferredSize(new Dimension(550,350));
+        //ajout d'une scrollbar
         myJScroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
         myPanel.add(myJScroll);
         // appliquer couleur différente 1 ligne sur 2
@@ -182,6 +195,7 @@ public class Application extends JFrame{
 
         Dimension buttonSize = new Dimension(90,35);
         JButton myBtnAdd = new JButton(new ImageIcon("src/addButton.png"));
+        myBtnAdd.setPreferredSize(buttonSize);
         myBtnAdd.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -194,6 +208,9 @@ public class Application extends JFrame{
             }
 
             @Override
+            /**
+             * Un clic sur le bouton "+" permet d'ajouter une ligne vierge
+             */
             public void mouseReleased(MouseEvent e) {
                 DefaultTableModel tableDefault = (DefaultTableModel)tableau.getModel();
                 String []  ligneVide = {"","","","","","",};
@@ -210,7 +227,7 @@ public class Application extends JFrame{
 
             }
         });
-        myBtnAdd.setPreferredSize(buttonSize);
+
         JButton myBtnDelete = new JButton(new ImageIcon("src/deleteButton.png"));
         myBtnDelete.addMouseListener(new MouseListener() {
             @Override
@@ -224,8 +241,12 @@ public class Application extends JFrame{
             }
 
             @Override
+            /**
+             * Un clic sur le bouton "x" permet de supprimer une ligne
+             */
             public void mouseReleased(MouseEvent e) {
                 int[] ligneSelect = tableau.getSelectedRows();
+                // condition : si aucune ligne n'est sélectionnée, un message d'erreur s'affiche via une boîte de dialogue.
                 if (ligneSelect.length == 0) {
                     JOptionPane optionpane = new JOptionPane();
                     optionpane.showMessageDialog(tableau, "Veuillez sélectionner une ligne dans le tableau", "** Erreur **", JOptionPane.ERROR_MESSAGE);
@@ -247,15 +268,15 @@ public class Application extends JFrame{
 
             }
         });
-        myBtnDelete.setPreferredSize(buttonSize);
 
+        myBtnDelete.setPreferredSize(buttonSize);
         gbc.gridx=3;
         gbc.gridy=10;
         gbc.gridheight=1;
         gbc.gridwidth=1;
 
         myPanel.add(myBtnAdd, gbc);
-
+    // mise en place des dénomination des textFields
         gbc.gridx = 4;
         myPanel.add(myBtnDelete,gbc);
         JLabel titre = new JLabel("Titre :");
@@ -285,7 +306,7 @@ public class Application extends JFrame{
         gbc.gridy = 6;
         myPanel.add(resume, gbc);
 
-
+        // mise en place d'un textField
         Dimension fieldSize = new Dimension  (150, 20);
         JTextField titreField = new JTextField();
         gbc.gridx = 8;
@@ -327,33 +348,6 @@ public class Application extends JFrame{
         gbc.gridheight=1;
         myPanel.add(myBtnOk, gbc);
 
-
-        myJScroll.addMouseListener(new MouseListener() {
-            @Override
-            public void mouseClicked(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mousePressed(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseReleased(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseEntered(MouseEvent e) {
-
-            }
-
-            @Override
-            public void mouseExited(MouseEvent e) {
-
-            }
-        });
         myBtnOk.addMouseListener(new MouseListener() {
             @Override
             public void mouseClicked(MouseEvent e) {
@@ -366,26 +360,41 @@ public class Application extends JFrame{
             }
 
             @Override
+            /**
+             * Un clic sur le bouton "valider" valide les informations dans le formulaire pour les intégrer au tableau.
+             */
             public void mouseReleased(MouseEvent e) {
                 int ligneSelectionnee = tableau.getSelectedRow();
                 int year = Calendar.getInstance().get(Calendar.YEAR);
+                // ne permet qu'une saisie d'année inférieure à celle du système.
                 tableau.setValueAt(titreField.getText(), ligneSelectionnee, 0);
 
+                // le texte saisi en dans le textfield "auteur" va remplacer celui inscrit dans la colonne 1 de la ligne sélectionnée.
                 tableau.setValueAt(auteurField.getText(), ligneSelectionnee, 1);
 
 
                 if (Integer.parseInt(parutionField.getText()) <= year) {
                     tableau.setValueAt(parutionField.getText(), ligneSelectionnee, 5);
-                } else;
+                }else{
+                    JOptionPane parution = new JOptionPane();
+                    parution.showMessageDialog(null,"Veuillez saisir une année antérieur à : "+year);
+                }
 
 
                 if (Integer.parseInt(colonneField.getText()) > 0 && Integer.parseInt(colonneField.getText()) < 8 ) {
                     tableau.setValueAt(colonneField.getText(), ligneSelectionnee, 3);
-                } else;
+                }else {
+                    JOptionPane colonne = new JOptionPane();
+                    colonne.showMessageDialog(null, "Veuillez séléctionner un numéro de colonne entre 1 et 8 compris");
+                }
+
 
                 if (Integer.parseInt(rangeeField.getText()) > 0 && Integer.parseInt(rangeeField.getText()) < 6 ) {
                     tableau.setValueAt(rangeeField.getText(), ligneSelectionnee, 4);
-                } else;
+                } else {
+                    JOptionPane rangee = new JOptionPane();
+                    rangee.showMessageDialog(null, "Veuillez séléctionner un numéro de rangée entre 1 et 5 compris");
+                }
 
                 tableau.setValueAt(resumerArea.getText(), ligneSelectionnee, 2);
 
@@ -412,9 +421,13 @@ public class Application extends JFrame{
 
     tableau.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
     @Override
+    /**
+     * Un clic sur une ligne du tableau affiche les données sélectionnées dans le formulaire.
+     */
     public void valueChanged(ListSelectionEvent e) {
         int ligneSelectionnee = tableau.getSelectedRow();
 
+        // affiche dans le champ "titre" du formulaire le texte contenu dans la colonne 0 de la ligne sélectionnée.
         titreField.setText(tableau.getValueAt(ligneSelectionnee, 0).toString());
         auteurField.setText(tableau.getValueAt(ligneSelectionnee, 1).toString());
         parutionField.setText(tableau.getValueAt(ligneSelectionnee, 5).toString());
@@ -426,11 +439,11 @@ public class Application extends JFrame{
         };
 
     public static void main(String[] args) {
+        // création d'une fenêtre
         Application myWindow = new Application();
         myWindow.pack();
-        // rend la fenêtre visible
         myWindow.setMinimumSize(new Dimension(1200,800));
+        // rend la fenêtre visible
         myWindow.setVisible(true);
-        myWindow.setLocationRelativeTo(null);
     };
 }
