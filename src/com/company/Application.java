@@ -52,7 +52,8 @@ public class Application extends JFrame{
              */
             public void mouseClicked(MouseEvent e) {
                 JOptionPane jop = new JOptionPane();
-                jop.showMessageDialog(null,"Version 1.0 \nIvann, Jérémy, Laurent","Informations", JOptionPane.INFORMATION_MESSAGE);
+                ImageIcon imgUnicorn = new ImageIcon("src/unicorn-2.png");
+                jop.showMessageDialog(null,"Version 1.0 \nIvann, Jérémy, Laurent","Informations", JOptionPane.INFORMATION_MESSAGE, imgUnicorn);
 
             }
 
